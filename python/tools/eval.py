@@ -90,7 +90,7 @@ if __name__ == '__main__':
     evaluation['dataset'][metric][statistic],3) for metric,statistic
     in itertools.product(args.metrics,cfg.EVAL.STATISTICS)])
 
-  print str(table) + "\n"
+  print(str(table) + "\n")
 
   # Save results
   if args.output is not None:

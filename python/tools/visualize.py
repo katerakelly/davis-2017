@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
   if args.input is None:
     # Visualize ground-truth data
-    for images,annotations in db.iteritems():
+    for images,annotations in db.items():
       for im,an in zip(images,annotations):
         ch = imshow(im,an,annotations.color_palette)
         if  ch == 'q':

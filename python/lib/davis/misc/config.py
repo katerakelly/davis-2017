@@ -97,16 +97,13 @@ def db_read_sequences(year=None,db_phase=None):
   sequences = db_read_info().sequences
 
   if year is not None:
-    sequences = filter(
-        lambda s:int(s.year) <= int(year),sequences)
+    sequences = [s for s in sequences if int(s.year) <= int(year)]
 
   if db_phase is not None:
     if db_phase == phase.TRAINVAL:
-      sequences = filter(
-          lambda s: ((s.set == phase.VAL.value) or (s.set == phase.TRAIN.value)), sequences)
+      sequences = [s for s in sequences if ((s.set == phase.VAL.value) or (s.set == phase.TRAIN.value))]
     else:
-      sequences = filter(
-          lambda s:s.set == db_phase.value,sequences)
+      sequences = [s for s in sequences if s.set == db_phase.value]
   return sequences
 
 # Load all sequences

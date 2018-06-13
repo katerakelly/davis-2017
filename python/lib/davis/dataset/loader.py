@@ -27,7 +27,7 @@ import davis
 import numpy as np
 
 from PIL import Image
-from base import Sequence, Annotation, BaseLoader, Segmentation
+from .base import Sequence, Annotation, BaseLoader, Segmentation
 
 from ..misc.config import cfg,phase,db_read_sequences
 
@@ -76,8 +76,8 @@ class DAVISLoader(object):
     self.annotations = [Annotation(s.name,self._single_object)
         for s in self._db_sequences]
 
-    self._keys = dict(zip([s.name for s in self.sequences],
-      range(len(self.sequences))))
+    self._keys = dict(list(zip([s.name for s in self.sequences],
+      list(range(len(self.sequences))))))
 
     # Check number of frames is correct
     for sequence,db_sequence in zip(self.sequences,self._db_sequences):
